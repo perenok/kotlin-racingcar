@@ -4,9 +4,10 @@ import racingcar.application.dto.CarDto
 
 object OutputView {
 
-    fun printResultMessage(){
+    fun printResultMessage() {
         println("실행 결과")
     }
+
     fun printRaceResult(cars: List<CarDto>) {
         cars.forEach {
             println("${it.name} : ${"-".repeat(it.position)}")

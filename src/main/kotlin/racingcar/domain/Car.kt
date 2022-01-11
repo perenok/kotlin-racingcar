@@ -15,7 +15,7 @@ class Car(
         return this.position == position
     }
 
-    fun getName() : String {
+    fun getName(): String {
         return carName.name
     }
 }
