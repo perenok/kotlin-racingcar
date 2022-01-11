@@ -1,9 +1,16 @@
 package racingcar.domain
 
-class Cars(val cars: List<Car>) {
+import racingcar.application.dto.CarDto
+
+class Cars {
+    private val cars: MutableList<Car> = mutableListOf()
+
+    fun addAll(cars: List<Car>) {
+        this.cars.addAll(cars)
+    }
 
     fun moveAll(moveStrategy: MoveStrategy) {
-        cars.forEach { car -> car.move(moveStrategy) }
+        cars.replaceAll { it.move(moveStrategy) }
     }
 
     fun calculateMaxPosition(): Int {
@@ -12,5 +19,9 @@ class Cars(val cars: List<Car>) {
 
     fun findCarsBySamePosition(position: Int): List<Car> {
         return cars.filter { it.isSamePosition(position) }
+    }
+
+    fun getCars(): List<CarDto> {
+        return cars.map { CarDto(it.getName(), it.position) }
     }
 }

@@ -16,13 +16,13 @@ dependencies {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = '11'
+    kotlinOptions.jvmTarget = '1.8'
     kotlinOptions {
-        languageVersion = "11"
+        languageVersion = "1.5"
     }
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = '11'
+    kotlinOptions.jvmTarget = '1.8'
 }
 test {
     useJUnitPlatform()

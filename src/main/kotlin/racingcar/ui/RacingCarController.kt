@@ -1,14 +1,23 @@
 package racingcar.ui
 
 import racingcar.application.RacingCarService
-import racingcar.ui.view.inputCarNames
-import racingcar.ui.view.inputTryNumber
+import racingcar.ui.view.InputView
+import racingcar.ui.view.OutputView
 
-class RacingCarController(private val carService: RacingCarService) {
+class RacingCarController {
+
+    private val inputView = InputView
+    private val outputView = OutputView
 
     fun run() {
-        val cars = inputCarNames()
-        val tryNumber = inputTryNumber()
-        val winner = carService.race(cars, tryNumber)
+        val carNames = inputView.inputCarNames()
+        val tryNumber = inputView.inputTryNumber()
+        val carService = RacingCarService(carNames)
+
+        outputView.printResultMessage()
+        repeat(tryNumber) {
+            outputView.printRaceResult(carService.race())
+        }
+        outputView.printWinners(carService.getWinners())
     }
 }
